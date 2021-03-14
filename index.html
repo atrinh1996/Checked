@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <style>
+        p{display: block;}
+    </style>
+
+    <title>Checkbox Challenge</title>
+</head>
+<body>
+    <h1>Checkbox Challenge</h1>
+
+    <script language="javascript">
+        $(document).ready(function() {
+            init();     // all boxes should be uncheck
+        });
+
+        // initialize all boxes to unchecked
+        function init() {
+            $("input[type='checkbox']").prop('checked', false);
+        }
+
+        // change all check boxes if master box is toggled
+        function toggleAll(master) {
+            $("input[name='chk']").each(function() {
+                $(this).prop('checked', $(master).prop('checked'));
+            });
+
+            if ($(master).is(":checked"))
+                $("span[name='all']").html("Uncheck All");
+            else
+                $("span[name='all']").html("Check All");
+        }
+    </script>
+
+    <p><input type='checkbox' name='all' onclick="toggleAll(this)">
+        <span name='all'>Check All</span>
+    </p>
+
+    <p><input type='checkbox' name='chk'> Option 1</p>
+    <p><input type='checkbox' name='chk'> Option 2</p>
+    <p><input type='checkbox' name='chk'> Option 3</p>
+    <p><input type='checkbox' name='chk'> Option 4</p>
+
+</body>
+</html>
